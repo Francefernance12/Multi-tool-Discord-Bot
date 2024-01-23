@@ -1,32 +1,42 @@
-# Multi-tool-Discord-Bot
+# Multi-tool Discord Bot
 
-<h2>Description</h2>
-A simple discord bot with helpful commands that could help you in various ways. simply start writing the command with `!` then write down the name of the command.
-<h3>Commands</h3>
-- quote - This command lets you generate a random quote from a random famous person to help you gain motivation <br />
-- animeshow - This command lets you generate a information about a random show. <br />
-- animeshowv2 - This command also lets you generate a information about a random show. This command has more information and provide links to provide more details <br />
-- tip - This command calculates how much you are paying for a bill with a tip. This command takes your first 2 integer inputs. <br />
-the first input is the bill, second input is the tip percentage. There is an optional third input you can add to split the amount of bill base on the amount of people paying. <br />
-- add - The command lets you sum up all the integers that you inputted. You can input as much integers as you want. <br />
-- subtract - The command lets you subtract up all the integers that you inputted. You can input as much integers as you want. <br />
-- multiply - The command lets you multiply up all the integers that you inputted. You can input as much integers as you want. <br />
-- divide - The command lets you divide up all the integers that you inputted. You can input as much integers as you want. <br />
-  
+## Description
 
-<h2>Value</h2>
-I simply started this project because I wanted to demonstrate it to my friends from a discord server that I manage. This
+Multi-tool Discord Bot is a simple Discord bot with helpful commands designed to assist users in various ways. To invoke a command, start by using `!` followed by the command name.
 
-<h2>What I learned</h2>
-- Discord Module
+### Commands
 
-<h2>How to Install</h2>
+- **quote**: Generate a random quote from a famous person to provide motivation.
+- **animeshow**: Get information about a random anime show.
+- **animeshowv2**: Similar to `animeshow` but with more details and links.
+- **tip**: Calculate the total amount to pay for a bill with a tip. The command takes the bill amount, tip percentage, and an optional third input to split the bill among multiple people.
+- **add**: Sum up multiple integers.
+- **subtract**: Subtract multiple integers.
+- **multiply**: Multiply multiple integers.
+- **divide**: Divide multiple integers.
 
-<h2>Data Source</h2>
+## Value
 
-  <h3>Quotes</h3>
-  https://zenquotes.io
+This project was initiated to showcase it to friends on a Discord server. Server owners with cultured members may find it appealing for anime recommendations. Additionally, the bot provides motivation through random quotes and offers a simple calculator for quick math. The tip calculator aids users in calculating tip percentages, total bills, and even splitting costs among friends.
 
-  <h3>Anime shows</h3>
-  https://www.kaggle.com/datasets/marlesson/myanimelist-dataset-animes-profiles-reviews?resource=download
-  https://github.com/jieverson/animeapi/tree/master
+## What I Learned
+
+### Discord Module
+- Discord commands
+- Discord Events
+
+## How to Install
+
+[WIP]
+
+## Data Source
+
+### Quotes
+
+Source: [ZenQuotes](https://zenquotes.io)
+
+### Anime Shows
+
+Sources:
+- [MyAnimeList Dataset](https://www.kaggle.com/datasets/marlesson/myanimelist-dataset-animes-profiles-reviews?resource=download)
+- [Anime API](https://github.com/jieverson/animeapi/tree/master)
