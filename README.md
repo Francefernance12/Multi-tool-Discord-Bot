@@ -17,7 +17,7 @@ Multi-tool Discord Bot is a simple Discord bot with helpful commands designed to
 
 ## Value
 
-This project was initiated to showcase it to friends on a Discord server. Server owners with cultured members may find it appealing for anime recommendations. Additionally, the bot provides motivation through random quotes and offers a simple calculator for quick math. The tip calculator aids users in calculating tip percentages, total bills, and even splitting costs among friends.
+This project was initiated to showcase it to friends on a Discord server. Server with cultured members may find it appealing for anime recommendations. Additionally, the bot provides motivation through random quotes and offers a simple calculator for quick math. The tip calculator aids users in calculating tip percentages, total bills, and even splitting costs among friends.
 
 ## What I Learned
 
