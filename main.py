@@ -77,44 +77,44 @@ async def anime_show(ctx):
 
 @bot.command(name="animeshowv2", help="Shows recommendation of a randomized anime show")
 async def anime_show(ctx):
-    # Read the CSV file and extract the desired columns
-    data = pandas.read_csv("./data/animesv2.csv")
-    extracted_column = data[["title", "synopsis", "genre", "aired", "episodes", "popularity", "ranked", "score",
-                             "img_url", "link"]]
+    while True:
+        # Read the CSV file and extract the desired columns
+        data = pandas.read_csv("./data/animesv2.csv")
+        extracted_column = data[["title", "synopsis", "genre", "aired", "episodes", "popularity", "ranked", "score",
+                                 "img_url", "link"]]
 
-    # Sample a random row
-    random_row = extracted_column.sample(n=1)
+        # Sample a random row
+        random_row = extracted_column.sample(n=1)
 
-    # Extract information from the random row and convert genres to a list using ast
-    genres_list = ast.literal_eval(random_row.iloc[0]["genre"])
-    title = random_row.iloc[0]["title"]
-    desc = random_row.iloc[0]["synopsis"]
-    genre = ', '.join(genres_list)  # Join the list back to a string for display
-    aired = random_row.iloc[0]["aired"]
-    episodes = random_row.iloc[0]["episodes"]
-    popularity = random_row.iloc[0]["popularity"]
-    ranked = random_row.iloc[0]["ranked"]
-    score = random_row.iloc[0]["score"]
-    img_url = random_row.iloc[0]["img_url"]
-    link = random_row.iloc[0]["link"]
+        # Extract information from the random row and convert genres to a list using ast
+        genres_list = ast.literal_eval(random_row.iloc[0]["genre"])
+        genre = ', '.join(genres_list)  # Join the list back to a string for display
+        title = random_row.iloc[0]["title"]
+        desc = random_row.iloc[0]["synopsis"]
+        aired = random_row.iloc[0]["aired"]
+        episodes = random_row.iloc[0]["episodes"]
+        popularity = random_row.iloc[0]["popularity"]
+        ranked = random_row.iloc[0]["ranked"]
+        score = random_row.iloc[0]["score"]
+        img_url = random_row.iloc[0]["img_url"]
+        link = random_row.iloc[0]["link"]
 
-    # Check if "Hentai" is not in the genres list
-    if "Hentai" not in genres_list:
-        # Send the formatted message to the Discord channel
-        message = f"Random Anime Show Recommendation:\n" \
-                  f"Title: {title}\n" \
-                  f"Description: {desc}\n" \
-                  f"Genre: {genre}\n" \
-                  f"Aired: {aired}\n" \
-                  f"Episodes: {episodes}\n" \
-                  f"Popularity: {popularity}\n" \
-                  f"Ranked: {ranked}\n" \
-                  f"Score: {score}\n" \
-                  f"Image URL: {img_url}\n" \
-                  f"More Info: {link}"
-        await ctx.send(message)
-    else:
-        await ctx.send("Sorry, no Hentai recommendations.")
+        # Check if "Hentai" is not in the genres list
+        if "Hentai" not in genres_list:
+            # Send the formatted message to the Discord channel
+            message = f"Random Anime Show Recommendation:\n" \
+                      f"Title: {title}\n" \
+                      f"Description: {desc}\n" \
+                      f"Genre: {genre}\n" \
+                      f"Aired: {aired}\n" \
+                      f"Episodes: {episodes}\n" \
+                      f"Popularity: {popularity}\n" \
+                      f"Ranked: {ranked}\n" \
+                      f"Score: {score}\n" \
+                      f"Image URL: {img_url}\n" \
+                      f"More Info: {link}"
+            await ctx.send(message)
+            break  # Exit the loop once a recommendation is sent
 
 
 # !tip command. Tip Calculator
