@@ -15,15 +15,13 @@ Multi-tool Discord Bot is a simple Discord bot with helpful commands designed to
 - **multiply**: Multiply multiple integers.
 - **divide**: Divide multiple integers.
 
-## Value
-
-This project was initiated to showcase it to friends on my Discord server. Servers with cultured members may find it appealing to have anime recommendations. Additionally, the bot provides motivation through random quotes and offers a simple calculator for quick math. The tip calculator assists users in figuring out tip percentages, total bills, and even splitting costs among friends, especially in scenarios like dining at a restaurant.
 
 ## What I Learned
 
 ### Discord Module
 - Discord commands
 - Discord Events
+- Async function
 
 ## How to Install
 
