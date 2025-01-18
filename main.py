@@ -87,7 +87,7 @@ async def anime_show(ctx):
         random_row = extracted_column.sample(n=1)
 
         # Extract information from the random row and convert genres to a list using ast
-        genres_list = ast.literal_eval(random_row.iloc[0]["genre"])
+        genres_list = ast.literal_eval(random_row.iloc[0]["genre"])  # ast is used to convert genres to list instead of string
         genre = ', '.join(genres_list)  # Join the list back to a string for display
         title = random_row.iloc[0]["title"]
         desc = random_row.iloc[0]["synopsis"]
@@ -166,12 +166,15 @@ async def multiply(ctx, *arr):
 # !divide command. Division
 @bot.command(name="divide", help="input as much numbers you want separated by spaces to divide")
 async def divide(ctx, *arr):
-    result = 1  # Initialize with a non-zero value
-    for number in arr:
-        if int(number) == 0:
+    numbers = [float(num) for num in arr]  # Convert inputs to floats
+    result = numbers[0]  # Start with the first number
+    
+    for num in numbers[1:]:
+        if num == 0:
             await ctx.send("Cannot divide by zero!")
             return
-        result /= int(number)
+        result /= num
+
     await ctx.send(f"Result: {result}")
 
 
