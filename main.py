@@ -23,7 +23,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents.all())
 
 
-# second server
+# Bot intro
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
@@ -43,11 +43,53 @@ async def on_ready():
         print(f"Error: Could not find the channel with ID {channel_id}")
 
 
+# Helper Functions
+def get_random_anime():
+        try:
+            # Read the CSV file
+            data = pandas.read_csv("./data/animesv2.csv")
+
+            while True:
+                # Sample a random row
+                random_row = data.sample(n=1)
+
+                # Extract random row
+                genres_list = ast.literal_eval(random_row.iloc[0]["genre"])  # evaluate string into list
+
+                # Filtering method
+                if "Hentai" in genres_list:
+                    continue
+
+                # Extract data
+                anime_info = {
+                    "title": random_row.iloc[0]["title"],
+                    "description": random_row.iloc[0]["synopsis"],
+                    "genre": ', '.join(genres_list),
+                    "aired": random_row.iloc[0]["aired"],
+                    "episodes": random_row.iloc[0]["episodes"],
+                    "popularity": random_row.iloc[0]["popularity"],
+                    "ranked": random_row.iloc[0]["ranked"],
+                    "score": random_row.iloc[0]["score"],
+                    "img_url": random_row.iloc[0]["img_url"],
+                    "link": random_row.iloc[0]["link"]
+                    }
+
+                return anime_info
+
+        except (FileNotFoundError, pd.errors.EmptyDataError, KeyError, ValueError) as e:
+            return {"error": f"Error fetching anime data: {e}"}
+
+
 def getquote():
-    response = requests.get("https://zenquotes.io/api/random")
-    json_data = json.loads(response.text)
+    try:
+        response = requests.get("https://zenquotes.io/api/random")
+        response.raise_for_status()  # Raises HTTPError for bad status codes
+        json_data = json.loads(response.text)
+    except requests.exceptions.HTTPError as e:
+        return f"HTTP error: {e}"
     quote = json_data[0]['q'] + " -" + json_data[0]['a']
     return quote
+
 
 
 @bot.command(name="quote", help="Get a random inspirational quote")
@@ -57,7 +99,6 @@ async def get_quote(ctx):
 
 
 # !animeshow command randomize show recommendations
-
 @bot.command(name="animeshow", help="Shows recommendation of a randomized anime show")
 async def anime_show(ctx):
     # Read the CSV file and extract the desired columns
@@ -75,46 +116,26 @@ async def anime_show(ctx):
     await ctx.send(f"Random Anime Show Recommendation:\nTitle: {title}\nDescription: {desc}")
 
 
+# !animeshowv2 command randomize show recommendations with more detail
 @bot.command(name="animeshowv2", help="Shows recommendation of a randomized anime show")
 async def anime_show(ctx):
-    while True:
-        # Read the CSV file and extract the desired columns
-        data = pandas.read_csv("./data/animesv2.csv")
-        extracted_column = data[["title", "synopsis", "genre", "aired", "episodes", "popularity", "ranked", "score",
-                                 "img_url", "link"]]
+    anime = get_random_anime()
 
-        # Sample a random row
-        random_row = extracted_column.sample(n=1)
+    # Send the formatted message to the Discord channel
+    message = f"Random Anime Show Recommendation:\n" \
+                f"Title: {anime['title']}\n" \
+                f"Description: {anime['description']}\n" \
+                f"Genre: {anime['genre']}\n" \
+                f"Aired: {anime['aired']}\n" \
+                f"Episodes: {anime['episodes']}\n" \
+                f"Popularity: {anime['popularity']}\n" \
+                f"Ranked: {anime['ranked']}\n" \
+                f"Score: {anime['score']}\n" \
+                f"Image URL: {anime['img_url']}\n" \
+                f"More Info: {anime['link']}"
 
-        # Extract information from the random row and convert genres to a list using ast
-        genres_list = ast.literal_eval(random_row.iloc[0]["genre"])  # ast is used to convert genres to list instead of string
-        genre = ', '.join(genres_list)  # Join the list back to a string for display
-        title = random_row.iloc[0]["title"]
-        desc = random_row.iloc[0]["synopsis"]
-        aired = random_row.iloc[0]["aired"]
-        episodes = random_row.iloc[0]["episodes"]
-        popularity = random_row.iloc[0]["popularity"]
-        ranked = random_row.iloc[0]["ranked"]
-        score = random_row.iloc[0]["score"]
-        img_url = random_row.iloc[0]["img_url"]
-        link = random_row.iloc[0]["link"]
+    await ctx.send(message)
 
-        # Check if "Hentai" is not in the genres list
-        if "Hentai" not in genres_list:
-            # Send the formatted message to the Discord channel
-            message = f"Random Anime Show Recommendation:\n" \
-                      f"Title: {title}\n" \
-                      f"Description: {desc}\n" \
-                      f"Genre: {genre}\n" \
-                      f"Aired: {aired}\n" \
-                      f"Episodes: {episodes}\n" \
-                      f"Popularity: {popularity}\n" \
-                      f"Ranked: {ranked}\n" \
-                      f"Score: {score}\n" \
-                      f"Image URL: {img_url}\n" \
-                      f"More Info: {link}"
-            await ctx.send(message)
-            break  # Exit the loop once a recommendation is sent
 
 
 # !tip command. Tip Calculator
