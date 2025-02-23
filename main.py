@@ -116,7 +116,7 @@ async def anime_show(ctx):
     await ctx.send(f"Random Anime Show Recommendation:\nTitle: {title}\nDescription: {desc}")
 
 
-# !animeshowv2 command randomize show recommendations with more detail
+# !animeshowv2 command randomize show recommendations with more detail.
 @bot.command(name="animeshowv2", help="Shows recommendation of a randomized anime show")
 async def anime_show(ctx):
     anime = get_random_anime()
