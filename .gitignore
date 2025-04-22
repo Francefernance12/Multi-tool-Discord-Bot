@@ -6,13 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-<<<<<<< HEAD
-# Discord Stuff
-*.log
-discord.log
-
-=======
->>>>>>> 68c39ad790b431ff2463ce4441ab49f55a449494
 # Distribution / packaging
 .Python
 build/
@@ -174,13 +167,10 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
-# Explicitly ignore specific files in .idea
-.idea/*.iml
-.idea/inspectionProfiles/
-.idea/inspectionProfiles/*.xml
 
 # PyPI configuration file
 .pypirc
 discord.log
-discord.log
 
+# Pycache
+__pycache__
