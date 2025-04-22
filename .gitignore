@@ -172,4 +172,5 @@ cython_debug/
 .pypirc
 discord.log
 
+# Pycache
 __pycache__
