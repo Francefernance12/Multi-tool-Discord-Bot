@@ -6,10 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+<<<<<<< HEAD
 # Discord Stuff
 *.log
 discord.log
 
+=======
+>>>>>>> 68c39ad790b431ff2463ce4441ab49f55a449494
 # Distribution / packaging
 .Python
 build/
