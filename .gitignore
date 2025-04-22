@@ -171,3 +171,5 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 discord.log
+
+__pycache__
