@@ -1,5 +1,5 @@
 from discord.ext import commands
-from os import getenv
+
 
 class EventsCog(commands.Cog):
     def __init__(self, bot):
@@ -8,21 +8,14 @@ class EventsCog(commands.Cog):
     # Bot intro
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f'We have logged in as {bot.user}')
-        
-        # Attempt to convert channel_id to integer
-        channel_id = getenv("CHANNEL_ID")
-        try:
-            channel_id = int(channel_id)
-        except ValueError:
-            print("Error: channel_id is not a valid integer.")
-            return
+        print(f'We have logged in as {self.bot.user}')  
 
-        channel = bot.get_channel(channel_id)
-        if channel:
-            await channel.send("Hello! Bot is ready!")
-        else:
-            print(f"Error: Could not find the channel with ID {channel_id}")
+        for guild in self.bot.guilds:  # Loop through servers
+            for channel in guild.text_channels:  # Loop through text channels
+                if channel.permissions_for(guild.me).send_messages:
+                    await channel.send("Hello! I'm online and ready to go! 🎉")
+                    break  # Only send to the first available channel
+
 
     # handle errors
     @commands.Cog.listener()

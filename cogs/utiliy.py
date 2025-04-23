@@ -6,22 +6,27 @@ class UtilityCog(commands.Cog):
         self.bot = bot
 
     # !tip command. Tip Calculator
-    @commands.command(name="tip", help="Add bill and tip. Split amount is optional")
+    @commands.command(name="tip", help="[Bill] [Tip Percentage] [Split Amount]. Add bill and tip. Split amount is optional.")
     async def tip_calculator(self, ctx, bill: float, tip: float, split: int = 1):
-        # input validations
-        if bill <= 0 or tip < 0 or split <= 0:
-            await ctx.send("Invalid input values. Please provide positive values for bill, tip, and split.")
-            return
-        # calculations
-        tip_amount = bill * (tip / 100)
-        # results
-        total_amount = round(bill + tip_amount, 2)
-        split_amount = round(total_amount / split, 2)
+        try:
+            # input validations
+            if bill <= 0 or tip < 0 or split <= 0:
+                await ctx.send("Invalid input values. Please provide positive values for bill, tip, and split.")
+                return
+            # calculations
+            tip_amount = bill * (tip / 100)
+            # results
+            total_amount = round(bill + tip_amount, 2)
+            split_amount = round(total_amount / split, 2)
 
-        # response
-        await ctx.send(f"Bill Amount: {bill:.2f}. Tip Percentage: {tip:.2f}%. Total Amount: {total_amount:.2f}")
-        if split_amount > 1:
-            await ctx.send(f"{split} people is paying ${split_amount:.2f} each")
+            # response
+            await ctx.send(f"Bill Amount: {bill:.2f}. Tip Percentage: {tip:.2f}%. Total Amount: {total_amount:.2f}")
+            if split_amount > 1:
+                await ctx.send(f"{split} people is paying ${split_amount:.2f} each")
+        except ValueError:
+            await ctx.send("Please provide valid numbers using the following format: [Bill] [Tip Percentage] [Split Amount]")
+        except Exception as e:
+            await ctx.send(f"An error occurred: {e}")
 
 
 # Setup
