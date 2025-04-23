@@ -1,8 +1,8 @@
 # Multi-tool Discord Bot
-## Description
+## 📝 Description
 This is a Discord bot that provides multiple quality of life tools such as calculator, recommendations, and more!
 
-## commands:
+## 🛠️ Commands:
 Prefix: !
 - !quote - Displays a random quote
 - !animeshow - Recommends you an anime to watch.
@@ -14,3 +14,14 @@ Prefix: !
 - !divide [Takes as many integers] - Divide multiple numbers.
 - !help - Show available commands
 
+## 🤖 Invite the Bot
+
+Click [here](https://discord.com/oauth2/authorize?client_id=1191921611574612038&scope=bot%20applications.commands&permissions=268446720) to invite this bot to your server!
+
+## Source
+**APIs:**
+- ZenQuotes API: Provides inspirational quotes.
+
+**CSV Data Sources:**
+- [anime.csv](https://github.com/jieverson/animeapi/blob/master/data/animes.csv): CSV source for anime recommendations.
+- [animev2.csv](https://www.kaggle.com/datasets/arnavvvvv/anime-dataset): Anime dataset source from Kaggle.
