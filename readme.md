@@ -20,7 +20,7 @@ Click [here](https://discord.com/oauth2/authorize?client_id=1191921611574612038&
 
 ## Source
 **APIs:**
-- ZenQuotes API: Provides inspirational quotes.
+- [ZenQuotes](https://zenquotes.io/) API: Provides inspirational quotes.
 
 **CSV Data Sources:**
 - [anime.csv](https://github.com/jieverson/animeapi/blob/master/data/animes.csv): CSV source for anime recommendations.
