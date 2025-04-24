@@ -3,8 +3,11 @@
 This is a Discord bot that provides multiple quality of life tools such as calculator, recommendations, and more!
 
 ## 🛠️ Commands:
-Prefix: !
-- !quote - Displays a random quote
+**Directions:** 
+When the bot is online, type the prefix `!` followed by the command.
+**Prefix:** `!`
+**Commands:**
+- !quote - Displays a random quote.
 - !animeshow - Recommends you an anime to watch.
 - !animeshowv2 - Recommends you more animes in greater details.
 - !tip [Bill] [Tip percentage] [Split amount] - Calculate the total tip amount and how each person should contribute when splitting bills.
