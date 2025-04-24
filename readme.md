@@ -4,8 +4,10 @@ This is a Discord bot that provides multiple quality of life tools such as calcu
 
 ## 🛠️ Commands:
 **Directions:** 
-When the bot is online, type the prefix `!` followed by the command.
+Once the bot is online, type in the prefix `!` followed by the selected command.
+
 **Prefix:** `!`
+
 **Commands:**
 - !quote - Displays a random quote.
 - !animeshow - Recommends you an anime to watch.
