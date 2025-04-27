@@ -4,6 +4,28 @@ import discord
 class HelpCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @commands.command(name="intro")
+    async def intro(self, ctx):
+        embed = discord.Embed(
+            title="👋 MultiTool Discord Bot!",
+            description="I'm a helpful and fun bot with features like random inspirational quotes, anime recommendations, and simple utilities like calculators. 🚀",
+            color=discord.Color.blurple()
+        )
+
+        embed.add_field(
+            name="🔹 Key Features",
+            value="• Random Inspirational Quotes 📖\n• Anime Show Recommendations 🎌\n• Tip Calculator 💵\n• Simple Math Operations ➕➖✖️➗",
+            inline=False
+        )
+        embed.add_field(
+            name="🔹 Getting Started",
+            value="Type `!help` to see all my available commands!",
+            inline=False
+        )
+
+        await ctx.send(embed=embed)
+    
     
     @commands.command(name="help")
     async def help(self, ctx):
